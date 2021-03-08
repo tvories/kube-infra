@@ -1,0 +1,33 @@
+{
+  "ignition": {
+    "version": "3.0.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "vagrant",
+        "noCreateHome": true,
+        "passwordHash": "$6$xzsJvkg10l$/MR33d6N0hKXj23Mlb7xustF5i2TzA1iQt9gErJysQxnANBHUyeUdyc.paED1gB0tIx5XPG2Zic4BLygr1Z2a/"
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "overwrite": true,
+        "path": "/etc/sudoers.d/vagrant",
+        "contents": {
+          "source": "data:,vagrant%20ALL%3D(ALL)%20NOPASSWD%3A%20ALL"
+        }
+      },
+      {
+        "overwrite": true,
+        "path": "/etc/hostname",
+        "contents": {
+          "source": "data:,kubic-packer"
+        },
+        "mode": 420
+      }
+    ]
+  }
+}
