@@ -79,8 +79,8 @@
       
     - name: Add ansible user to sudoers
       ansible.builtin.lineinfile:
-        path: /etc/sudoers.d/{{ ansible_username }}
-        line: "{{ ansible_user }} ALL=(ALL) NOPASSWD: ALL"
+        path: "/etc/sudoers.d/{{ ansible_username }}"
+        line: "{{ ansible_username }} ALL=(ALL) NOPASSWD: ALL"
         state: present
         mode: 0440
         create: yes

@@ -1,0 +1,29 @@
+---
+
+k3s_control_node: true
+k3s_taint_master: true
+
+k3s_server:
+  node-ip: "{{ ansible_host }}"
+  docker: false
+  disable:
+    - flannel
+    - traefik
+    - servicelb
+    - metrics-server
+    - local-storage
+  disable-network-policy: true
+  tls-san:
+    - k-cp-prod1
+    - k-cp-prod2
+    - k-cp-prod3
+    - "{{ kube_endpoint }}"
+    - 192.168.80.20
+    - 192.168.80.21
+    - 192.168.80.22
+  disable-cloud-controller: true
+  write-kubeconfig-mode: "644"
+  # Network CIDR to use for pod IPs
+  cluster-cidr: "10.42.0.0/16"
+  # Network CIDR to use for service IPs
+  service-cidr: "10.43.0.0/16"

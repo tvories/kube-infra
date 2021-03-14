@@ -1,0 +1,27 @@
+---
+# Playbook for base systems
+
+- name: Install k3s
+  hosts: controlplane_staging, worker_staging
+  become: yes
+  roles:
+    - role: xanmanning.k3s
+      tags: ['k3s']
+    - role: k3s
+      tags: ['myk3s']
+    
+  vars:
+    env: staging
+    
+    current_user: "{{ lookup('env', 'USER') }}"
+    kube_endpoint: "kube-staging.mcbadass.local" #TODO: Get this from terraform
+    
+    k3s_release_version: v1.20.4+k3s1
+    k3s_install_hard_links: true
+    k3s_use_unsupported_config: true
+    
+    # Network CIDR to use for pod IPs
+    # k3s_cluster_cidr: "10.42.0.0/16"
+
+    # Network CIDR to use for service IPs
+    # k3s_service_cidr: "10.43.0.0/16"

@@ -39,3 +39,12 @@ talos.sh
 
 # Packer
 *.auto.pkrvars.hcl
+
+*secrets*
+
+# Kubernetes
+*kubeconfig*
+xanmanning.k3s/
+
+# Inventory
+*inventory*.yml
